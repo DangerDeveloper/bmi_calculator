@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reuseable_card.dart';
+import 'constant.dart';
 
-const activeCardColor = Color(0xFF1D1E33);
-const bottomContainerHeight = 80.0;
-const bottomContainerColor = Color(0xFFEB1555);
+enum Gender {
+  male,
+  female,
+}
 
 class InputPage extends StatefulWidget {
   @override
@@ -13,6 +15,8 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  Gender selectedGender;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +30,14 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReuseableCard(
-                    color: activeCardColor,
+                    onTab: () {
+                      setState(() {
+                        selectedGender = Gender.male;
+                      });
+                    },
+                    color: selectedGender == Gender.male
+                        ? kActiveCardColor
+                        : kInActiveCardColor,
                     childData: IconContent(
                       icon: FontAwesomeIcons.mars,
                       label: 'MALE',
@@ -35,7 +46,14 @@ class _InputPageState extends State<InputPage> {
                 ),
                 Expanded(
                   child: ReuseableCard(
-                    color: activeCardColor,
+                    onTab: () {
+                      setState(() {
+                        selectedGender = Gender.female;
+                      });
+                    },
+                    color: selectedGender == Gender.female
+                        ? kActiveCardColor
+                        : kInActiveCardColor,
                     childData: IconContent(
                       icon: FontAwesomeIcons.venus,
                       label: 'FEMALE',
@@ -47,7 +65,33 @@ class _InputPageState extends State<InputPage> {
           ),
           Expanded(
             child: ReuseableCard(
-              color: activeCardColor,
+              color: kActiveCardColor,
+              childData: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'HEIGHT',
+                    style: kLabelTextStyle,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(
+                        '180',
+                        style: kSliderText,
+                      ),
+                      Text(
+                        'cm',
+                        style: kLabelTextStyle,
+                      ),
+                    ],
+                  ),
+//                  Slider(value: null, onChanged: null),
+                ],
+              ),
             ),
           ),
           Expanded(
@@ -55,22 +99,22 @@ class _InputPageState extends State<InputPage> {
               children: <Widget>[
                 Expanded(
                   child: ReuseableCard(
-                    color: activeCardColor,
+                    color: kActiveCardColor,
                   ),
                 ),
                 Expanded(
                   child: ReuseableCard(
-                    color: activeCardColor,
+                    color: kActiveCardColor,
                   ),
                 ),
               ],
             ),
           ),
           Container(
-            color: bottomContainerColor,
+            color: kBottomContainerColor,
             width: double.infinity,
             margin: EdgeInsets.only(top: 10.0),
-            height: bottomContainerHeight,
+            height: kBottomContainerHeight,
           ),
         ],
       ),
