@@ -6,4 +6,11 @@ const kBottomContainerHeight = 80.0;
 const kBottomContainerColor = Color(0xFFEB1555);
 
 const kLabelTextStyle = TextStyle(color: Color(0xFF8D8E98), fontSize: 18.0);
-const kSliderText = TextStyle(color: Colors.white, fontSize: 40.0,fontWeight: FontWeight.w900);
+const kSliderText = TextStyle(fontSize: 50.0, fontWeight: FontWeight.w900);
+const kBottomButtonText = TextStyle(
+    fontSize: 25.0, fontWeight: FontWeight.w900);
+const kResultTextStyle = TextStyle(
+    color: Color(0xFF24D876), fontSize: 22.0, fontWeight: FontWeight.bold);
+const kNumberResultText = TextStyle(
+    fontSize: 100.0, fontWeight: FontWeight.w900);
+const kBodyTextStyle = TextStyle(fontSize: 22.0,);
